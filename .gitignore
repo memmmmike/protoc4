@@ -2,3 +2,5 @@ inbox/*.json
 outbox/*.json
 processed/*.json
 hosts.json
+*/inbox/*.json
+*/outbox/*.json
