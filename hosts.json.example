@@ -1,0 +1,14 @@
+{
+  "laptop": {
+    "ssh": "user@192.168.1.10",
+    "tunnel": null
+  },
+  "server": {
+    "ssh": "user@server.example.com",
+    "tunnel": null
+  },
+  "cloud-vm": {
+    "ssh": "ubuntu@10.0.0.5",
+    "tunnel": "ssh.mydomain.com"
+  }
+}

@@ -4,3 +4,4 @@ processed/*.json
 hosts.json
 */inbox/*.json
 */outbox/*.json
+*.log
