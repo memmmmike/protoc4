@@ -9,13 +9,14 @@ MY_ID="claude-${HOSTNAME}-${MY_TTY}"
 
 mkdir -p "$PROCESSED"
 
+shopt -s nullglob
 FOUND=""
-for msg in "$INBOX"/*.json 2>/dev/null; do
+for msg in "$INBOX"/*.json; do
   [ -f "$msg" ] || continue
-  
+
   TO=$(grep -o '"to"[[:space:]]*:[[:space:]]*"[^"]*"' "$msg" | cut -d'"' -f4)
-  
-  if [ "$TO" = "all" ] || [ "$TO" = "$MY_ID" ] || [[ "$TO" == *"$MY_TTY"* ]]; then
+
+  if [ "$TO" = "all" ] || [ "$TO" = "$MY_ID" ] || [[ "$TO" == *"$HOSTNAME"* ]] || [[ "$TO" == *"fedora"* ]]; then
     FOUND="$FOUND$(cat "$msg")\n---\n"
     mv "$msg" "$PROCESSED/"
   fi

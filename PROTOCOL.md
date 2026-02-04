@@ -100,21 +100,21 @@ Each machine has its own `~/.claude/ipc/inbox/`. To send messages across machine
 Store in `~/.claude/ipc/hosts.json`:
 ```json
 {
-  "fedora": {
-    "ssh": "mlayug@192.168.1.105",
+  "server1": {
+    "ssh": "user@192.168.1.100",
     "tunnel": null
   },
-  "zimaboard": {
-    "ssh": "mlayug@192.168.1.187",
-    "tunnel": "ssh.0pon.com"
+  "server2": {
+    "ssh": "user@192.168.1.101",
+    "tunnel": "ssh.example.com"
   }
 }
 ```
 
 ### Sender ID for Cross-Machine
 Include hostname: `claude-{hostname}-{tty}`
-- `claude-fedora-pts0`
-- `claude-zimaboard-ttyd`
+- `claude-server1-pts0`
+- `claude-server2-ttyd`
 
 ### Delivery
 To send to a remote host:

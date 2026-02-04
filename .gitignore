@@ -1,5 +1,4 @@
 inbox/*.json
 outbox/*.json
 processed/*.json
-fedora/
-zimaboard/
+hosts.json

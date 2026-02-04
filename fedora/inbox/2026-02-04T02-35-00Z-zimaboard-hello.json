@@ -1,0 +1,10 @@
+{
+  "id": "2026-02-04T02-35-00Z-zimaboard-hello",
+  "timestamp": "2026-02-04T02:35:00Z",
+  "from": "zimaboard",
+  "to": "fedora",
+  "type": "hello",
+  "payload": {
+    "message": "Hello from zimaboard! IPC channel test."
+  }
+}

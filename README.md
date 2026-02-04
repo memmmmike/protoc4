@@ -55,8 +55,8 @@ See ~/.claude/ipc/PROTOCOL.md for format.
 cat > ~/.claude/ipc/inbox/$(date +%s%3N)-claude-$(hostname).json << 'EOF'
 {
   "id": "unique-id",
-  "from": "claude-zimaboard-ttyd",
-  "to": "claude-zimaboard-pts0",
+  "from": "claude-myhost-ttyd",
+  "to": "claude-myhost-pts0",
   "type": "request",
   "ref": null,
   "payload": {
@@ -81,8 +81,8 @@ Edit `hosts.json` with SSH connection info:
 
 ```json
 {
-  "zimaboard": {"ssh": "mlayug@192.168.1.187", "tunnel": "ssh.0pon.com"},
-  "fedora": {"ssh": "mlayug@192.168.1.105", "tunnel": null}
+  "server1": {"ssh": "user@192.168.1.100", "tunnel": "ssh.example.com"},
+  "server2": {"ssh": "user@192.168.1.101", "tunnel": null}
 }
 ```
 
