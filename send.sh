@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # protoc4: Send IPC message
 # Usage: send.sh <to> <type> <action> [--host <hostname>] [--data <json>] [--ref <msg-id>]
 
@@ -73,7 +73,8 @@ esac
 
 # Build message
 HOSTNAME=$(hostname 2>/dev/null || echo "unknown")
-TTY=$(tty 2>/dev/null | sed 's|/dev/||' | tr '/' '-' || echo "script")
+TTY=$(tty 2>/dev/null | sed 's|/dev/||' | tr '/' '-' | tr ' ' '_' || echo "script")
+[ "$TTY" = "not_a_tty" ] && TTY="bg"
 TIMESTAMP=$(date +%s%3N)
 MSG_ID="${TIMESTAMP}-claude-${HOSTNAME}-${TTY}"
 ISO_TIME=$(date -Iseconds)

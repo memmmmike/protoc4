@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # protoc4: Check inbox for IPC messages
 # Called by Claude Code hook on UserPromptSubmit
 
