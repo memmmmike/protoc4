@@ -1,0 +1,14 @@
+[Unit]
+Description=Claude IPC Daemon - Auto-processes incoming messages
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.claude/ipc/ipc-daemon.sh
+Restart=on-failure
+RestartSec=5
+# For NixOS compatibility
+Environment=PATH=/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

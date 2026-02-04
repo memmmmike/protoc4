@@ -122,11 +122,37 @@ Or manually:
 3. Ensure SSH keys are set up for passwordless access
 4. For Cloudflare Tunnel, set `tunnel` to the hostname
 
+## Automatic Mode (Daemon)
+
+The default hook-based approach requires user activity. For fully automatic processing, run the IPC daemon:
+
+```bash
+# Install the systemd user service
+mkdir -p ~/.config/systemd/user
+cp ~/.claude/ipc/claude-ipc.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now claude-ipc.service
+```
+
+The daemon uses `inotifywait` to watch the inbox and automatically invokes Claude when messages arrive.
+
+**Requirements:**
+- `inotify-tools` package (provides `inotifywait`)
+- Claude Code installed and in PATH
+
+**Check status:**
+```bash
+systemctl --user status claude-ipc.service
+tail -f ~/.claude/ipc/daemon.log
+```
+
 ## Limitations
 
-**Not real-time.** Messages are checked when you submit a prompt. If Claude is mid-response or idle, it won't see new messages until you interact.
+**Hook mode: Not real-time.** Messages are checked when you submit a prompt. If Claude is mid-response or idle, it won't see new messages until you interact.
 
-**Requires user activity.** A completely silent Claude session won't process its inbox.
+**Hook mode: Requires user activity.** A completely silent Claude session won't process its inbox.
+
+**Daemon mode solves both** - but runs Claude in the background, which uses API credits.
 
 **No delivery guarantees.** Messages expire after TTL. No retries, no acknowledgments.
 
